@@ -1,0 +1,14 @@
+FROM ubuntu:18.10
+
+RUN apt-get update && apt-get install -y python3-distutils python3-pip
+
+EXPOSE 9095
+
+COPY . .
+
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+RUN pip3 install -r requirements.txt
+
+CMD python3 -u main.py cloud-node
